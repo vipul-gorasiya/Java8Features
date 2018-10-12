@@ -9,31 +9,18 @@ import com.vipul.examples.lambda.Phone.Network;
 
 public class LambdaExamples {
 
-	List<Phone> phones = null;
+	private List<Phone> phones = null;
 
-	public static void main(String[] args) {
-		LambdaExamples examples = new LambdaExamples();
-		examples.init();
-
-		// Print smart Phones
-		System.out.println("Smart Phones: ");
-		examples.printMatchingForms(p -> p instanceof SmartPhone);
-
-		// print phone with front cameras
-		System.out.println("Phones with front camera: ");
-		examples.printMatchingForms(p -> {
-			if (p instanceof SmartPhone) {
-				return ((SmartPhone) p).getFrontCamera().isPresent();
-			}
-			return false;
-		});
+	public List<Phone> getPhones() {
+		return phones;
 	}
 
-	private void printMatchingForms(FunctionalInterfaces.SearchSmartPhone searchPhone) {
-		phones.forEach(p -> {
-			if (searchPhone.testPhone(p))
-				System.out.println(p.getBrand() + " " + p.getModel());
-		});
+	public void setPhones(List<Phone> phones) {
+		this.phones = phones;
+	}
+
+	public LambdaExamples() {
+		init();
 	}
 
 	/**
